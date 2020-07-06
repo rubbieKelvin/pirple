@@ -25,7 +25,7 @@ SECRET_KEY = 'jwg49#+-h)4r%((_h1t-c=bq1)^w5ufw$osil5+)$hhdp@@=ry'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'classroom',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'auth'
 ]
 
 MIDDLEWARE = [
@@ -136,14 +136,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# REST_FRAMEWORK = {
-#     "DEFAULT_AUTHENTICATION_CLASSES":(
-#         "rest_framework.authentication.TokenAuthentication",
-#     ),
-#     "DEFAULT_PERMISSION_CLASSES":(
-#         'rest_framework.permissions.IsAuthenticated',
-#     )
-# }
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES":(
+        "rest_framework.authentication.TokenAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES":(
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 
 CORS_ORIGIN_ALLOW_ALL = True

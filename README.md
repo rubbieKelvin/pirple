@@ -5,5 +5,7 @@
 #### Getting auth token:
 `POST`: /auth-token-auth/
 
-#### Getting users 
-authen
+`DATA`: {username:&lt;string&gt;, password:&lt;string&gt;}
+
+#### Registering
+``
