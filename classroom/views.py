@@ -2,20 +2,25 @@ from django.shortcuts import render
 
 # Create your views here.
 from .serializers import UserSerializer
-from .models import User
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.authentication import TokenAuthentication
+from django.contrib.auth.models import User
 
 class UserRecordView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser,]
+    authentication_classes = [TokenAuthentication,]
 
     def get(self, format=None):
         users = User.objects.all()
         serializers = UserSerializer(users, many=True)
         return Response(serializers.data)
+
+
+class SignUpView(APIView):
 
     def post(self, request):
         serializers = UserSerializer(data=request.data)

@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import UserRecordView
+
+from .views import SignUpView, UserRecordView
 
 app_name = "classroom"
 
 urlpatterns = [
-    path("user/", UserRecordView.as_view(), name="users")
+    path("accounts/signup/", SignUpView.as_view(), name="accounts-signup"),
+    path("accounts/", UserRecordView.as_view(), "users")
 ]
