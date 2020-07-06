@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.documentation, name="documentation"),
+    path('info/', views.appinfo, name='appinfo'),
+    path('auth/', include("pirpleauth.urls"))
 ]
